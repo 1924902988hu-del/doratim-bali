@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巴厘岛 7 日 · 南岸私池躺平 × 火山高地</title>
+<meta name="description" content="为两个人写的巴厘岛 7 日行程：南部 Samabe 私池躺平、火山咖啡与海岸日落，半天探索半天躺平。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="巴厘岛 7 日 · 南岸私池 × 火山高地">
+<meta property="og:description" content="Samabe 南部 3 晚 + Indigo 水明漾 3 晚：私池、浮潜、Akasa 火山咖啡、海滩日落。">
+<meta property="og:url" content="https://doratim-bali.com">
+<meta property="og:image" content="https://doratim-bali.com/images/img-09.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="巴厘岛 7 日 · 南岸私池 × 火山高地">
+<meta name="twitter:description" content="Samabe 南部 3 晚 + Indigo 水明漾 3 晚：私池、浮潜、Akasa 火山咖啡、海滩日落。">
+<meta name="twitter:image" content="https://doratim-bali.com/images/img-09.jpg">
+<meta name="author" content="doratim-bali">
+<meta name="theme-color" content="#1d3d33">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="canonical" href="https://doratim-bali.com/">
+
+<!-- Open Graph -->
+
+<!-- Twitter Card -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  :root{
+    --paper:#f4ecdf;--paper-2:#ece1cf;--paper-3:#e4d7c1;
+    --ink:#2a2620;--ink-soft:#5d5446;--ink-faint:#8a7f6c;
+    --palm:#2f5d4e;--palm-deep:#1d3d33;--sunset:#c0552d;--gold:#b48a45;
+    --line:rgba(42,38,32,.16);--line-soft:rgba(42,38,32,.09);
+    --shadow:0 22px 50px -28px rgba(29,61,51,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:"Noto Sans SC",-apple-system,sans-serif;
+    font-weight:400;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E")}
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 28px}
+  .kicker{font-family:"Fraunces",serif;font-style:italic;font-weight:400;color:var(--sunset);font-size:1.05rem}
+  .eyebrow{font-family:"Fraunces",serif;text-transform:uppercase;letter-spacing:.42em;font-size:.7rem;font-weight:600;color:var(--ink-faint)}
+
+  /* HERO */
+  .hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 64px;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:#1d3d33 center/cover no-repeat;
+    background-image:linear-gradient(180deg,rgba(20,38,32,.18) 0%,rgba(20,38,32,.34) 45%,rgba(23,40,34,.9) 100%),
+      url('images/img-02.jpg');
+    transform:scale(1.08);animation:kenburns 18s ease-out forwards}
+  @keyframes kenburns{to{transform:scale(1)}}
+  .hero .wrap{width:100%}
+  .hero-inner{max-width:760px;color:#f4ecdf;opacity:0;transform:translateY(26px);animation:rise 1s cubic-bezier(.2,.7,.2,1) .25s forwards}
+  .hero .eyebrow{color:rgba(244,236,223,.72)}
+  .hero h1{font-family:"Noto Serif SC","Fraunces",serif;font-weight:700;font-size:clamp(2.9rem,8vw,5.6rem);line-height:1.04;margin:.2em 0 .35em;letter-spacing:-.01em;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+  .hero h1 em{font-family:"Fraunces",serif;font-style:italic;font-weight:400;color:#e8b97a;display:block;font-size:clamp(1.4rem,3.4vw,2.2rem);margin-top:.15em;letter-spacing:0}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:26px;font-size:.95rem;color:rgba(244,236,223,.92)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(244,236,223,.35);border-radius:999px;padding:7px 16px;backdrop-filter:blur(3px)}
+  .scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(244,236,223,.7);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;font-family:"Fraunces",serif;animation:bob 2.2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* SECTION */
+  section{padding:78px 0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:38px;flex-wrap:wrap}
+  .sec-head .num{font-family:"Fraunces",serif;font-size:1rem;color:var(--sunset);font-weight:600}
+  .sec-head h2{font-family:"Noto Serif SC",serif;font-weight:700;font-size:clamp(1.8rem,4.2vw,2.7rem);line-height:1.15;letter-spacing:-.01em}
+  .sec-head .rule{flex:1;height:1px;background:var(--line);min-width:40px;align-self:center}
+  .lead{color:var(--ink-soft);font-size:.96rem;margin-bottom:22px;max-width:70ch}
+
+  /* note */
+  .note{background:linear-gradient(135deg,var(--palm) 0%,var(--palm-deep) 100%);color:#f1eadd;border-radius:18px;padding:42px 44px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .note::after{content:"“";position:absolute;right:24px;top:-18px;font-family:"Fraunces",serif;font-size:11rem;color:rgba(244,236,223,.12);line-height:1}
+  .note .eyebrow{color:#e8b97a}
+  .note h3{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.5rem;margin:.5em 0 .55em;color:#fff;line-height:1.4}
+  .note p{color:rgba(241,234,221,.92);font-weight:300;font-size:1.02rem;max-width:62ch}
+  .note strong{color:#f3c98a;font-weight:500}
+
+  /* OVERVIEW STRIP */
+  .strip{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+  .strip .cell{background:var(--paper-2);border:1px solid var(--line-soft);border-radius:14px;padding:16px 14px;display:flex;flex-direction:column;gap:6px;min-height:148px;transition:transform .35s ease,box-shadow .35s ease}
+  .strip .cell:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .strip .cell.ubud{background:linear-gradient(160deg,#e9f0e7,#dbe7d6)}
+  .strip .cell.sea{background:linear-gradient(160deg,#fbe9da,#f6dcc3)}
+  .strip .d{font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;color:var(--palm-deep)}
+  .strip .cell.sea .d{color:var(--sunset)}
+  .strip .wk{font-size:.72rem;color:var(--ink-faint);letter-spacing:.04em}
+  .strip .where{font-weight:500;font-size:.86rem;margin-top:auto;line-height:1.45}
+  .strip .pace{font-size:.74rem;color:var(--ink-soft);line-height:1.4}
+  .leg{display:flex;gap:22px;margin-top:18px;font-size:.8rem;color:var(--ink-soft);flex-wrap:wrap}
+  .leg b{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:7px;vertical-align:-1px}
+  .leg .lg-u{background:#cfe0c8}.leg .lg-s{background:#f3d3b3}
+
+  /* MAP */
+  #routemap{height:520px;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#e7e0d2}
+  .leaflet-container{font-family:"Noto Sans SC",sans-serif}
+  .leaflet-tooltip.mlbl{background:rgba(29,61,51,.9);color:#f4ecdf;border:none;border-radius:6px;font-size:.72rem;padding:3px 9px;box-shadow:0 4px 10px rgba(0,0,0,.2);white-space:nowrap;font-weight:500}
+  .leaflet-tooltip.mlbl.sea{background:rgba(157,62,28,.92)}
+  .leaflet-tooltip.mlbl::before{display:none}
+  .maplegend{display:flex;flex-wrap:wrap;gap:20px;margin-top:18px;font-size:.82rem;color:var(--ink-soft)}
+  .maplegend i{display:inline-block;width:26px;height:0;border-top-width:3px;border-top-style:solid;margin-right:8px;vertical-align:4px}
+  .maplegend .l1{border-color:var(--palm)}.maplegend .l2{border-color:var(--gold);border-top-style:dashed}
+  .maplegend .l3{border-color:var(--sunset)}.maplegend .l4{border-color:var(--ink-faint);border-top-style:dashed}
+
+  /* STAGE + DAYS */
+  .stage-band{display:flex;align-items:center;gap:16px;margin:64px 0 30px}
+  .stage-band .tag{font-family:"Fraunces",serif;font-style:italic;font-size:1.25rem;color:var(--sunset)}
+  .stage-band .ttl{font-family:"Noto Serif SC",serif;font-weight:700;font-size:1.45rem;white-space:nowrap}
+  .stage-band .ln{flex:1;height:1px;background:var(--line)}
+  .day{display:grid;grid-template-columns:96px 1fr;gap:26px;padding:30px 0;border-top:1px solid var(--line-soft)}
+  .day:first-of-type{border-top:none}
+  .day .marker{text-align:center}
+  .day .marker .n{font-family:"Fraunces",serif;font-weight:600;font-size:2.7rem;line-height:1;color:var(--palm)}
+  .day.sea .marker .n{color:var(--sunset)}
+  .day .marker .date{font-size:.75rem;color:var(--ink-faint);margin-top:6px;letter-spacing:.03em}
+  .day .body h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.28rem;margin-bottom:8px}
+  .day .body p{color:var(--ink-soft);font-size:.97rem;margin-bottom:14px;max-width:64ch}
+  .day .body p strong{color:var(--ink);font-weight:500}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .pill{font-size:.74rem;background:var(--paper-2);border:1px solid var(--line-soft);border-radius:999px;padding:5px 13px;color:var(--ink-soft)}
+  .day .shots{display:flex;gap:10px;flex-wrap:wrap}
+  .day .shots .photo{width:172px;height:118px;border-radius:12px;background:var(--palm) center/cover no-repeat;flex:1 1 150px;min-width:130px;box-shadow:0 12px 26px -18px rgba(29,61,51,.6);position:relative;overflow:hidden}
+  .day .shots .photo span{position:absolute;left:0;right:0;bottom:0;font-size:.7rem;color:#fff;padding:14px 10px 7px;background:linear-gradient(transparent,rgba(20,38,32,.78));letter-spacing:.02em}
+
+  /* EXPERIENCE */
+  .exp{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:14px}
+  .exp .x{background:var(--paper-2);border:1px solid var(--line-soft);border-radius:14px;padding:20px 20px 22px;transition:transform .3s,border-color .3s}
+  .exp .x:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .exp .x .mk{font-family:"Fraunces",serif;font-style:italic;color:var(--sunset);font-size:1.1rem;margin-bottom:6px}
+  .exp .x h5{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.05rem;margin-bottom:5px}
+  .exp .x p{font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+  .skip{margin-top:18px;font-size:.86rem;color:var(--ink-soft);background:var(--paper-3);border-left:3px solid var(--sunset);padding:14px 18px;border-radius:0 10px 10px 0}
+
+  /* WELLNESS / WATER */
+  .twin{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .feat{border-radius:18px;padding:34px 34px 30px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .feat.heal{background:linear-gradient(150deg,#34604f,#1d3d33);color:#eef3ea}
+  .feat.surf{background:linear-gradient(150deg,#cf6535,#9d3e1c);color:#fbeadd}
+  .feat .ic{font-family:"Fraunces",serif;font-size:1.1rem;letter-spacing:.3em;text-transform:uppercase;opacity:.8}
+  .feat h3{font-family:"Noto Serif SC",serif;font-weight:700;font-size:1.5rem;margin:.35em 0 .6em;color:#fff}
+  .feat p{font-size:.93rem;font-weight:300;line-height:1.75;margin-bottom:14px}
+  .feat ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .feat li{font-size:.9rem;padding-left:20px;position:relative;font-weight:300}
+  .feat li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.7)}
+  .feat li b{font-weight:600;color:#fff}
+  .allday{margin-top:22px}
+  .allday h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.15rem;margin-bottom:6px}
+  .allday .lead2{font-size:.9rem;color:var(--ink-soft);margin-bottom:16px}
+  .resgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .res{background:var(--paper-2);border:1px solid var(--line-soft);border-radius:14px;padding:18px 18px 20px;transition:transform .3s}
+  .res:hover{transform:translateY(-4px)}
+  .res .rn{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1rem;margin-bottom:4px}
+  .res .rl{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sunset);font-family:"Fraunces",serif;font-weight:700;margin-bottom:8px}
+  .res p{font-size:.82rem;color:var(--ink-soft);line-height:1.55}
+
+  /* TRANSIT */
+  .transit{width:100%;border-collapse:collapse;font-size:.95rem}
+  .transit tr{border-bottom:1px solid var(--line-soft)}
+  .transit tr:last-child{border-bottom:none}
+  .transit td{padding:15px 4px}
+  .transit td:first-child{font-weight:500}
+  .transit td:last-child{text-align:right;font-family:"Fraunces",serif;font-weight:600;color:var(--palm-deep);white-space:nowrap;font-size:1.02rem}
+  .transit .warn td:last-child{color:var(--sunset)}
+  .transit .arrow{color:var(--ink-faint);margin:0 6px}
+
+  /* HOTELS */
+  .hsub{font-family:"Fraunces",serif;font-style:italic;font-size:1.2rem;color:var(--palm-deep);margin:8px 0 16px}
+  .hsub.sea{color:var(--sunset)}
+  .hotels{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:20px;margin-bottom:14px}
+  .hotel{border-radius:18px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line-soft);box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .35s}
+  .hotel:hover{transform:translateY(-6px)}
+  .hotel .img{height:178px;background:var(--palm) center/cover no-repeat;position:relative}
+  .hotel .img .rate{position:absolute;top:12px;right:12px;background:rgba(20,38,32,.86);color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:.78rem;padding:4px 11px;border-radius:999px;backdrop-filter:blur(4px)}
+  .hotel .img .price{position:absolute;left:12px;bottom:12px;background:rgba(244,236,223,.94);color:var(--ink);font-size:.74rem;font-weight:500;padding:5px 12px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+  .hotel .img .price b{color:var(--sunset);font-family:"Fraunces",serif;font-weight:600}
+  .hotel .img .ribbon{position:absolute;left:0;top:14px;background:var(--sunset);color:#fff;font-size:.68rem;letter-spacing:.12em;font-weight:700;padding:4px 12px 4px 14px;border-radius:0 999px 999px 0}
+  .hotel .meta{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+  .hotel .meta .loc{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sunset);font-weight:700;font-family:"Fraunces",serif}
+  .hotel .meta h4{font-family:"Noto Serif SC",serif;font-weight:700;font-size:1.18rem;margin:5px 0 9px}
+  .hotel .meta p{font-size:.85rem;color:var(--ink-soft);line-height:1.6;margin-bottom:12px}
+  .hotel .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+  .hotel .tags span{font-size:.68rem;background:var(--paper-3);border-radius:999px;padding:3px 10px;color:var(--ink-soft)}
+  .pricenote{font-size:.76rem;color:var(--ink-faint);margin-bottom:26px}
+  .alt{margin-top:6px;background:var(--paper-2);border:1px solid var(--line-soft);border-radius:14px;padding:22px 24px}
+  .alt h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.1rem;margin-bottom:9px}
+  .alt p{font-size:.88rem;color:var(--ink-soft);margin-bottom:8px}
+  .alt p:last-child{margin-bottom:0}.alt b{color:var(--palm-deep);font-weight:600}
+
+  /* TIPS */
+  .tips{display:grid;grid-template-columns:1fr 1fr;gap:14px 34px}
+  .tip{display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed var(--line-soft)}
+  .tip .ic{font-family:"Fraunces",serif;font-weight:600;color:var(--sunset);font-size:1.3rem;line-height:1.4}
+  .tip p{font-size:.9rem;color:var(--ink-soft);line-height:1.6}
+  .tip p b{color:var(--ink);font-weight:600}
+
+  footer{background:var(--palm-deep);color:rgba(244,236,223,.8);padding:56px 0 64px;margin-top:40px}
+  footer .wrap{text-align:center}
+  footer .mk{font-family:"Fraunces",serif;font-style:italic;color:#e8b97a;font-size:1.6rem;margin-bottom:14px}
+  footer p{font-size:.86rem;font-weight:300;max-width:60ch;margin:0 auto;line-height:1.7}
+  footer .dom{margin-top:18px;font-family:"Fraunces",serif;letter-spacing:.16em;font-size:.8rem;color:#e8b97a}
+  footer .small{margin-top:14px;font-size:.72rem;color:rgba(244,236,223,.45)}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .twin{grid-template-columns:1fr}
+    .resgrid{grid-template-columns:1fr 1fr}
+    .tips{grid-template-columns:1fr}
+    .note{padding:32px 26px}
+  }
+  @media(max-width:560px){
+    .day{grid-template-columns:1fr;gap:14px}
+    .day .marker{display:flex;align-items:baseline;gap:12px;text-align:left}
+    .day .marker .n{font-size:2rem}.day .marker .date{margin-top:0}
+    .strip{grid-template-columns:1fr 1fr}
+    .resgrid{grid-template-columns:1fr}
+    .stage-band .ttl{white-space:normal}
+    #routemap{height:440px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="eyebrow">Bali · 13–19 June · for two</div>
+      <h1>南岸私池，火山清晨<em>Sawangan pools · Seminyak sunsets · a volcano morning</em></h1>
+      <div class="hero-meta">
+        <span>◷ 6/13 07:45 落地 → 6/20 00:30 飞</span>
+        <span>♡ 情侣出行</span>
+        <span>☖ Samabe 南部 3 晚 + Indigo 水明漾 3 晚</span>
+        <span>✿ 旱季 · 人少天好</span>
+      </div>
+    </div>
+  </div>
+  <div class="scrollcue">向下滑 ↓</div>
+</header>
+
+<!-- EDITOR NOTE -->
+<section id="note">
+  <div class="wrap">
+    <div class="note reveal">
+      <div class="eyebrow">先把节奏说清楚</div>
+      <h3>南部躺三晚，再去市区扫中北部</h3>
+      <p>这趟的逻辑：<strong>前段（6/13–16）住南部 Samabe</strong>，把乌鲁瓦图、海滩、浮潜这些<strong>南部景点都在 20–50 分钟车程内</strong>玩透，其余时间泡私池、SPA、看日落；<strong>后段（6/16–19）搬到水明漾 Indigo</strong>，离机场仅半小时、又靠近市区，向中部（乌布）和高地（金塔马尼火山）放射状深度游。<br><br><strong>一个老实话：</strong>水明漾不是"中部"，去乌布单程 1.5–2h、去北部高地 2–2.5h，所以中北部按"<strong>一天一条大环线</strong>"安排，别每天来回折腾。你唯一想去的北部 <strong>Akasa 火山咖啡（金塔马尼）</strong>正好和乌布顺成一条东北轴线，6/17 一天串完。</p>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">01</span><h2>行程总览</h2><span class="rule"></span></div>
+    <div class="strip reveal">
+      <div class="cell sea"><div class="d">6/13</div><div class="wk">周六</div><div class="where">机场 → Samabe</div><div class="pace">落地躺平 · 日落酒吧</div></div>
+      <div class="cell sea"><div class="d">6/14</div><div class="wk">周日</div><div class="where">乌鲁瓦图</div><div class="pace">神庙 · Kecak 火舞</div></div>
+      <div class="cell sea"><div class="d">6/15</div><div class="wk">周一</div><div class="where">Nusa Penida</div><div class="pace">出海浮潜 · 看海龟</div></div>
+      <div class="cell sea"><div class="d">6/16</div><div class="wk">周二</div><div class="where">Samabe → Indigo</div><div class="pace">转场 · 土豆头日落</div></div>
+      <div class="cell ubud"><div class="d">6/17</div><div class="wk">周三</div><div class="where">火山 + 乌布</div><div class="pace">Akasa · 东北大环线</div></div>
+      <div class="cell ubud"><div class="d">6/18</div><div class="wk">周四</div><div class="where">海神庙 + 长谷</div><div class="pace">黄昏 · 躺平</div></div>
+      <div class="cell sea"><div class="d">6/19</div><div class="wk">周五</div><div class="where">水明漾 → 机场</div><div class="pace">扫尾 · 赶红眼</div></div>
+    </div>
+    <div class="leg reveal"><span><b class="lg-s"></b>南部海岸 · Samabe 段</span><span><b class="lg-u"></b>中部高地 · 火山 + 乌布</span></div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">02</span><h2>路线地图</h2><span class="rule"></span></div>
+    <p class="lead reveal">可拖动、缩放查看。绿色为抵达进 Samabe，橙色为白天景点环线（南部海滩/神庙 + 火山/乌布东北轴），金色虚线为 Samabe→水明漾转场，灰色虚线为返程去机场。</p>
+    <div id="routemap" class="reveal"></div>
+    <div class="maplegend reveal">
+      <span><i class="l1"></i>抵达：机场 → Samabe</span>
+      <span><i class="l3"></i>景点环线：南部 + 火山/乌布</span>
+      <span><i class="l2"></i>转场：Samabe → Indigo</span>
+      <span><i class="l4"></i>返程：Indigo → 机场</span>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="days" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">03</span><h2>逐日路线</h2><span class="rule"></span></div>
+
+    <div class="stage-band reveal"><span class="tag">第一段 · 6/13–16</span><span class="ttl">南部海岸 · Samabe（私池躺平）</span><span class="ln"></span></div>
+
+    <div class="day sea reveal">
+      <div class="marker"><div class="n">1</div><div class="date">6/13 周六</div></div>
+      <div class="body">
+        <h4>抵达 · 沉进私池</h4>
+        <p>07:45 落地，提前约好私人司机接机，约 30 分钟到 Samabe（Sawangan 悬崖）。刚下红眼航班<strong>别排活动</strong>：寄存行李、争取早 check-in（蜜月可提），泡你那间 180㎡ 海景套房的<strong>私人泳池</strong>，或去海滩、做个 SPA 缓时差。<strong>傍晚去 AYANA Rock Bar 看日落喝酒</strong>（离 Samabe 约 15 分钟，海上岩石平台）<span class="pill" style="margin-left:6px">他 · 酒吧日落</span>，或金巴兰沙滩海鲜（选 Lia/Kelly's，避开 Menega 那条宰客街）。</p>
+        <div class="pills"><span class="pill">私人接机</span><span class="pill">私池 / 漂浮早餐</span><span class="pill">Rock Bar 日落</span><span class="pill">早睡倒时差</span></div>
+        <div class="shots"><div class="photo" style="background-image:url('images/img-14.jpg')"><span>Samabe · 海景私池套房</span></div></div>
+      </div>
+    </div>
+
+    <div class="day sea reveal">
+      <div class="marker"><div class="n">2</div><div class="date">6/14 周日</div></div>
+      <div class="body">
+        <h4>乌鲁瓦图 · 神庙与火舞</h4>
+        <p>上午泡池 / SPA，或去 <strong>Melasti 海滩</strong>（车直达沙滩、水干净，南部最佳）。傍晚去 <strong>乌鲁瓦图神庙</strong>看 70 米崖壁日落，<strong>订 7 点场 Kecak 火舞</strong>（比 6 点凉快人少，提前 3 天订）。小心庙里的猴子专抢眼镜帽子。晚餐金巴兰海鲜或崖顶 Single Fin。离 Samabe 都在 20–30 分钟。</p>
+        <div class="pills"><span class="pill">Melasti 海滩</span><span class="pill">乌鲁瓦图神庙</span><span class="pill">Kecak 火舞 7pm</span><span class="pill">Padang Padang</span></div>
+        <div class="shots">
+          <div class="photo" style="background-image:url('images/img-03.jpg')"><span>乌鲁瓦图神庙</span></div>
+          <div class="photo" style="background-image:url('images/img-02.jpg')"><span>Melasti 海滩</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day sea reveal">
+      <div class="marker"><div class="n">3</div><div class="date">6/15 周一</div></div>
+      <div class="body">
+        <h4>Nusa Penida · 出海浮潜</h4>
+        <p><span class="pill" style="margin-right:6px">她 · 浮潜</span>全天出海。从 Sanur 港（离 Samabe ~45 分钟）<strong>6:30 早出发</strong>，去 <strong>Manta Bay 看蝠鲼 + Crystal Bay 看海龟珊瑚</strong>。选<strong>"只浮潜不上岛"</strong>的船，避开岛上烂路颠簸。<strong>提醒：6 月蝠鲼看运气（7–10 月才旺季），海龟珊瑚基本稳。</strong>傍晚回 Samabe，最后一晚安排<strong>私池花瓣晚餐 / 洞穴双人晚餐</strong>（Samabe 蜜月招牌）。<br><span style="color:var(--ink-faint);font-size:.9em">不想折腾就把这天换成 GWK 文化公园 + Pandawa 海滩 + 下午全 SPA 躺平。</span></p>
+        <div class="pills"><span class="pill">Manta Bay 蝠鲼</span><span class="pill">Crystal Bay 海龟</span><span class="pill">私池花瓣晚餐</span><span class="pill">洞穴晚餐</span></div>
+        <div class="shots"><div class="photo" style="background-image:url('images/img-13.jpg')"><span>Nusa Penida 浮潜海域</span></div></div>
+      </div>
+    </div>
+
+    <div class="stage-band reveal"><span class="tag">第二段 · 6/16–19</span><span class="ttl">水明漾 · Indigo（市区放射）</span><span class="ln"></span></div>
+
+    <div class="day reveal">
+      <div class="marker"><div class="n">4</div><div class="date">6/16 周二</div></div>
+      <div class="body">
+        <h4>转场 · 土豆头日落</h4>
+        <p>上午 Samabe 最后泡池、争取晚退房，约 1–1.5 小时转场到水明漾，下午入住 Indigo（一卧别墅 300㎡ 带私池+厨房）。<strong>傍晚直接去隔壁的 Potato Head 海滩俱乐部看日落</strong><span class="pill" style="margin-left:6px">他 · 酒吧日落</span>——无边泳池、海滩吧、驻场 DJ，全岛最强日落场。晚餐 Seminyak（La Lucciola 海边 / Sarong / Mama San）。</p>
+        <div class="pills"><span class="pill">晚退房转场</span><span class="pill">Indigo 私池别墅</span><span class="pill">Potato Head 日落</span><span class="pill">Seminyak 晚餐</span></div>
+        <div class="shots"><div class="photo" style="background-image:url('images/img-04.jpg')"><span>Potato Head 日落俱乐部</span></div></div>
+      </div>
+    </div>
+
+    <div class="day ubud reveal">
+      <div class="marker"><div class="n">5</div><div class="date">6/17 周三</div></div>
+      <div class="body">
+        <h4>火山 + 乌布 · 东北大环线</h4>
+        <p>这趟唯一的北部 + 中部深度日，包车一整天。<strong>早 6:30–7:00 出发</strong>直奔金塔马尼 <strong>Akasa 火山咖啡</strong>（水明漾 ~2.5–3h）——<span class="pill" style="margin:0 6px 0 0">火山打卡</span>正对巴图尔火山喝金塔马尼咖啡吃 brunch。<strong>务必上午到：火山上午最清晰，下午起云雾就糊了</strong>，海拔高带件薄外套。回程一路向南穿乌布：<strong>Tirta Empul 圣泉 → Tegallalang 梯田 → 圣猴森林 / 乌布皇宫市集</strong>，在乌布吃晚饭 ~8 点再回水明漾（避开 5–7 点死堵）。</p>
+        <div class="pills"><span class="pill">Akasa 火山咖啡</span><span class="pill">Tirta Empul 圣泉</span><span class="pill">Tegallalang 梯田</span><span class="pill">乌布皇宫市集</span><span class="pill">瑜伽/SPA 可加</span></div>
+        <div class="shots">
+          <div class="photo" style="background-image:url('images/img-09.jpg')"><span>Akasa · 巴图尔火山景</span></div>
+          <div class="photo" style="background-image:url('images/img-01.jpg')"><span>Tegallalang 梯田</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day ubud reveal">
+      <div class="marker"><div class="n">6</div><div class="date">6/18 周四</div></div>
+      <div class="body">
+        <h4>海神庙 + 长谷 · 黄昏躺平</h4>
+        <p>昨天长途今天放松。下午去 <strong>Tanah Lot 海神庙</strong>（离水明漾 30–45 分钟）看海上神庙日落——傍晚很挤，提早占好高点。可顺路 <strong>Canggu</strong> 喝网红咖啡、Echo Beach 看冲浪。其余时间 Indigo 私池、双人 SPA、水明漾精品店。<br><span style="color:var(--ink-faint);font-size:.9em">想再深一点：把今天换成 Bedugul 湖中神庙 + Jatiluwih 梯田高地环线（但又是 10h 长途，紧接红眼会累，建议保留这天躺平恢复）。</span></p>
+        <div class="pills"><span class="pill">Tanah Lot 日落</span><span class="pill">Canggu 咖啡</span><span class="pill">私池 / 双人 SPA</span><span class="pill">精品店</span></div>
+        <div class="shots"><div class="photo" style="background-image:url('images/img-12.jpg')"><span>Tanah Lot 海神庙</span></div></div>
+      </div>
+    </div>
+
+    <div class="day sea reveal">
+      <div class="marker"><div class="n">7</div><div class="date">6/19 周五</div></div>
+      <div class="body">
+        <h4>扫尾 · 赶红眼</h4>
+        <p><strong>⚠ 今晚 00:30 的飞机，但 Indigo 早上就退房——务必安排行李寄存 + 争取 day-use / 晚退房</strong>（没有住宿过夜）。白天水明漾扫尾：精品店购物、<strong>最后一次 SPA</strong><span class="pill" style="margin-left:6px">她 · 疗愈</span>、海滩俱乐部告别日落（Ku De Ta / La Plancha）。晚餐后 <strong>~21:00 去机场</strong>（水明漾→DPS 30–45 分钟），赶 6/20 00:30 航班（国际航班提前 3 小时）。</p>
+        <div class="pills"><span class="pill">行李寄存 / day-use</span><span class="pill">最后 SPA</span><span class="pill">告别日落</span><span class="pill">21:00 去机场</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="exp" style="background:linear-gradient(180deg,transparent,var(--paper-2) 12%,var(--paper-2) 88%,transparent)">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">04</span><h2>特色体验 · 情侣向</h2><span class="rule"></span></div>
+    <div class="exp">
+      <div class="x reveal"><div class="mk">i.</div><h5>私池花瓣晚餐</h5><p>Samabe 海景套房私池撒花瓣＋烛光，或洞穴双人晚餐，蜜月仪式感天花板。</p></div>
+      <div class="x reveal"><div class="mk">ii.</div><h5>私池漂浮早餐</h5><p>泳池里的早餐托盘超出片。点最便宜档拍照，正经早餐去餐厅吃更实在。</p></div>
+      <div class="x reveal"><div class="mk">iii.</div><h5>双人花瓣浴 SPA</h5><p>Samabe / Indigo 都能做，海风环绕、氛围满分，半天躺平的最佳打开方式。</p></div>
+      <div class="x reveal"><div class="mk">iv.</div><h5>Akasa 火山咖啡</h5><p>金塔马尼正对巴图尔火山喝咖啡吃 brunch，悬空步道＋鸟巢座，上午最清。</p></div>
+      <div class="x reveal"><div class="mk">v.</div><h5>Nusa Penida 浮潜</h5><p>Manta Bay 看蝠鲼、Crystal Bay 看海龟珊瑚，选"只浮潜不上岛"最省心。</p></div>
+      <div class="x reveal"><div class="mk">vi.</div><h5>Kecak 火舞</h5><p>乌鲁瓦图神庙日落场，崖壁、海风、火光，全程必看（订 7 点场）。</p></div>
+      <div class="x reveal"><div class="mk">vii.</div><h5>金巴兰烛光海鲜</h5><p>沙滩上摆桌、脚踩细沙吃海鲜看日落（选 Lia / Kelly's，避开 Menega）。</p></div>
+      <div class="x reveal"><div class="mk">viii.</div><h5>海滩俱乐部日落</h5><p>Potato Head 本场 + AYANA Rock Bar 海上岩石平台，两种日落都收。</p></div>
+    </div>
+    <div class="skip reveal"><b>不建议这趟做：</b>北部 Lovina 看海豚（追船扰豚、口碑差）和 Mount Batur 凌晨登顶徒步（2 点起床全天报废）——你们要的火山只是 Akasa 的景，开车到金塔马尼喝咖啡就够，不必爬山。</div>
+  </div>
+</section>
+
+<!-- WELLNESS + WATER -->
+<section id="wellness">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">05</span><h2>疗愈 · 海上运动 · 全天活动</h2><span class="rule"></span></div>
+    <p class="lead reveal">巴厘是亚洲的疗愈之都，也有平静水域与戏剧化海岸线；不少度假村本身就拥有绝美海岸线和全天候的特色活动——住进去就不想出门。</p>
+    <div class="twin">
+      <div class="feat heal reveal">
+        <div class="ic">Healing</div>
+        <h3>疗愈冥想 &amp; SPA</h3>
+        <p>这趟把"疗愈"放在酒店内做最省事：Samabe（南段）和 Indigo（水明漾）都有 SPA 与私池，6/17 去乌布那天还能加一节晨瑜伽 / 颂钵。</p>
+        <ul>
+          <li><b>Samabe Spa</b> 海景理疗、私池花瓣浴、洞穴双人按摩</li>
+          <li><b>Indigo · Sava Spa</b> 别墅内双人按摩，水明漾设计感</li>
+          <li><b>乌布段（6/17）</b> 可加晨瑜伽 / 颂钵 sound bath</li>
+          <li><b>上门服务</b> Bali Yoga Delivery 私教瑜伽、ADDA 颂钵到 villa（¥450–900/场）</li>
+        </ul>
+      </div>
+      <div class="feat surf reveal">
+        <div class="ic">Ocean</div>
+        <h3>浮潜 &amp; 海岸线</h3>
+        <p>想看鱼必须出海一次——南部酒店前海都不能浮潜（沙底、涌大、珊瑚退化）；要戏剧化海岸线，乌鲁瓦图崖壁与金巴兰湾日落最出片。</p>
+        <ul>
+          <li><b>Nusa Penida 浮潜</b>（6/15 已排）Manta Bay 蝠鲼 + Crystal Bay 海龟</li>
+          <li><b>避坑</b> Tanjung Benoa "喂鱼浮潜"汽油味重、口碑差，不值</li>
+          <li><b>冲浪</b> 乌鲁瓦图 / Padang Padang（进阶）、库塔（新手）</li>
+          <li><b>最美海岸</b> 乌鲁瓦图崖壁、金巴兰湾、Melasti 石灰岩峡谷</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="allday reveal">
+      <h4>住进去就不想出门的设施</h4>
+      <p class="lead2">你们订的两家本身就有全天可泡的项目，半天躺平绰绰有余：</p>
+      <div class="resgrid">
+        <div class="res reveal"><div class="rl">Sawangan</div><div class="rn">Samabe（已订）</div><p>海景私池套房、洞穴晚餐、SPA、半 all-inclusive 含早茶。</p></div>
+        <div class="res reveal"><div class="rl">Jimbaran</div><div class="rn">AYANA Rock Bar</div><p>离 Samabe 15 分钟，海上岩石平台日落酒吧 + Spa on the Rocks。</p></div>
+        <div class="res reveal"><div class="rl">Seminyak</div><div class="rn">Indigo（已订）</div><p>一卧私池别墅、设计泳池、Sava Spa，步行到 Potato Head 日落。</p></div>
+        <div class="res reveal"><div class="rl">Kintamani</div><div class="rn">Akasa 火山咖啡</div><p>正对巴图尔火山的咖啡 brunch，6/17 东北环线打卡。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSIT -->
+<section id="transit">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">06</span><h2>各区通勤时间</h2><span class="rule"></span></div>
+    <p class="lead reveal">以下为实际路况估计，非地图理论值。</p>
+    <table class="transit reveal">
+      <tr><td>机场 <span class="arrow">→</span> Samabe（Sawangan）</td><td>25–35 分钟</td></tr>
+      <tr><td>Samabe <span class="arrow">→</span> 乌鲁瓦图 / 海滩</td><td>20–30 分钟</td></tr>
+      <tr><td>Samabe <span class="arrow">→</span> Sanur 港（Nusa Penida）</td><td>45–60 分钟</td></tr>
+      <tr><td>Samabe <span class="arrow">→</span> 水明漾（转场）</td><td>1–1.5 小时</td></tr>
+      <tr class="warn"><td>水明漾 <span class="arrow">↔</span> 乌布</td><td>1.5–2 小时</td></tr>
+      <tr class="warn"><td>水明漾 <span class="arrow">→</span> 金塔马尼 Akasa 火山</td><td>2.5–3 小时</td></tr>
+      <tr><td>水明漾 <span class="arrow">→</span> Tanah Lot / Canggu</td><td>30–45 分钟</td></tr>
+      <tr><td>水明漾 <span class="arrow">→</span> 机场</td><td>30–45 分钟</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- HOTELS -->
+<section id="hotels">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">07</span><h2>酒店推荐</h2><span class="rule"></span></div>
+
+    <div class="hsub reveal">已锁定 · 两段主力</div>
+    <div class="hotels">
+      <div class="hotel reveal">
+        <div class="img" style="background-image:url('images/img-14.jpg')">
+          <div class="ribbon">已订</div><div class="rate">★ 4.6</div><div class="price">Agoda 约 <b>¥9,957</b>/3晚</div>
+        </div>
+        <div class="meta"><div class="loc">努沙杜瓦 · Sawangan</div><h4>Samabe · 海景泳池套房</h4>
+          <p>180㎡ 海景套房带私人泳池，悬崖私密、半 all-inclusive，洞穴晚餐＋私池花瓣是蜜月招牌。6/13–16 三晚。</p>
+          <div class="tags"><span>私池</span><span>海景</span><span>蜜月</span></div></div>
+      </div>
+      <div class="hotel reveal">
+        <div class="img" style="background-image:url('images/img-06.jpg')">
+          <div class="ribbon">已订</div><div class="rate">★ 4.6</div><div class="price">携程 约 <b>¥10,068</b>/3晚</div>
+        </div>
+        <div class="meta"><div class="loc">水明漾 · Seminyak</div><h4>Hotel Indigo · 一卧别墅</h4>
+          <p>300㎡ 一卧别墅带私池＋厨房，IHG 设计酒店，步行到 Potato Head 海滩俱乐部，离机场仅半小时。6/16–19 三晚。</p>
+          <div class="tags"><span>私池</span><span>设计</span><span>近海滩</span></div></div>
+      </div>
+    </div>
+    <p class="pricenote reveal">* Samabe 同房型 Agoda（¥9,957）比携程（¥11,345）省约 ¥1,388，支付切 IDR 避 5% 货币费；Indigo 一卧别墅 6/16–19 全网仅携程有货。<b>下单前以实时报价为准。</b></p>
+
+    <div class="hsub sea reveal">这趟会去的玩乐点（非住宿）</div>
+    <div class="hotels">
+      <div class="hotel reveal">
+        <div class="img" style="background-image:url('images/img-09.jpg')">
+          <div class="rate">☕ 火山</div><div class="price">6/17 东北环线</div>
+        </div>
+        <div class="meta"><div class="loc">金塔马尼 · Kintamani</div><h4>Akasa 火山咖啡</h4>
+          <p>正对巴图尔火山的网红咖啡，悬空步道＋鸟巢座。05:30 开门，上午火山最清，建议预订、带薄外套。</p>
+          <div class="tags"><span>火山景</span><span>brunch</span><span>打卡</span></div></div>
+      </div>
+      <div class="hotel reveal">
+        <div class="img" style="background-image:url('images/img-04.jpg')">
+          <div class="rate">★ 日落</div><div class="price">6/16 傍晚</div>
+        </div>
+        <div class="meta"><div class="loc">水明漾 · Petitenget</div><h4>Potato Head 海滩俱乐部</h4>
+          <p>全岛最强日落 beach club，无边泳池＋海滩吧＋驻场 DJ，就在 Indigo 旁边，他的酒吧日落主场。</p>
+          <div class="tags"><span>日落</span><span>酒吧</span><span>设计</span></div></div>
+      </div>
+      <div class="hotel reveal">
+        <div class="img" style="background-image:url('images/img-12.jpg')">
+          <div class="rate">★ 日落</div><div class="price">6/18 傍晚</div>
+        </div>
+        <div class="meta"><div class="loc">Tabanan</div><h4>Tanah Lot 海神庙</h4>
+          <p>海上岩石神庙，黄昏剪影绝美。离水明漾 30–45 分钟，傍晚人多，提早占好高点。</p>
+          <div class="tags"><span>海神庙</span><span>日落</span><span>顺路 Canggu</span></div></div>
+      </div>
+    </div>
+
+    <div class="alt reveal">
+      <h4>怎么调</h4>
+      <p><b>6/15 不想出海：</b>把 Nusa Penida 浮潜换成 GWK 文化公园＋Pandawa 海滩＋Samabe 全 SPA 躺平，更轻松。</p>
+      <p><b>6/18 想再深一点：</b>可把 Tanah Lot 那天换成 Bedugul 湖中神庙＋Jatiluwih 高地环线，但又是 10h 长途、紧接红眼会累，建议保留这天恢复。</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips" style="padding-bottom:30px">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">08</span><h2>实用 tips</h2><span class="rule"></span></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="ic">¶</div><p><b>包车</b>：整天司机约 IDR 55–80 万（8–10 小时）。6/17 火山+乌布大环线、6/15 浮潜接送都用包车更顺；短途用 Grab/Gojek。</p></div>
+      <div class="tip reveal"><div class="ic">¶</div><p><b>金塔马尼火山</b>：Akasa 上午 7–9 点火山最清、人少光好，下午起云雾就糊；海拔高带件薄外套，建议提前预订。</p></div>
+      <div class="tip reveal"><div class="ic">¶</div><p><b>⚠ 最后一晚没住宿</b>：6/19 退房但航班 6/20 00:30，务必跟 Indigo 安排行李寄存 / day-use，玩到 ~21:00 再去机场。</p></div>
+      <div class="tip reveal"><div class="ic">¶</div><p><b>神庙礼仪</b>：要穿沙笼（现场提供）；猴子区收好眼镜、手机，它们真的会抢。</p></div>
+      <div class="tip reveal"><div class="ic">¶</div><p><b>支付 &amp; 防晒</b>：订房/消费选 IDR 计价避 5% 货币费；小额门票备现金；6 月紫外线强，帽子、防晒、瓶装水带齐。</p></div>
+      <div class="tip reveal"><div class="ic">¶</div><p><b>季节</b>：6 月是旱季，全年最舒服的窗口之一，天气稳、人比 7、8 月少。</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mk">Selamat jalan ✿</div>
+    <p>南部三晚把私池、日落、浮潜玩透，再搬到水明漾向火山与乌布放射——半天探索、半天躺平，这趟刚刚好。</p>
+    <div class="dom">doratim-bali.com</div>
+    <div class="small">巴厘岛 7 日情侣行程 · 6/13–6/19 · Samabe + Hotel Indigo · 路线与通勤为实际路况估计，房价与营业请在预订前确认实时信息</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(Math.min(i%6,5)*0.06)+'s'; io.observe(el); });
+
+  // Leaflet route map
+  window.addEventListener('load', function(){
+    if(typeof L === 'undefined') return;
+    var P = {
+      airport:[-8.7462,115.1670], samabe:[-8.8312,115.2247], indigo:[-8.6840,115.1530],
+      uluwatu:[-8.8291432,115.0849069], melasti:[-8.8477419,115.1606704], padang:[-8.8111377,115.1037658],
+      sanur:[-8.6890,115.2620], penida:[-8.7275,115.5440],
+      ubud:[-8.5069,115.2625], tegalalang:[-8.4317112,115.279303], tirta:[-8.4156,115.3153],
+      akasa:[-8.2755,115.3750], tanahlot:[-8.6212,115.0868]
+    };
+    var map = L.map('routemap',{scrollWheelZoom:false}).setView([-8.60,115.28],10);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      {attribution:'© OpenStreetMap, © CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
+
+    L.polyline([P.airport,P.samabe],{color:'#2f5d4e',weight:3.5,opacity:.9}).addTo(map);
+    L.polyline([P.samabe,P.uluwatu,P.padang,P.melasti,P.samabe],{color:'#c0552d',weight:3.5,opacity:.9}).addTo(map);
+    L.polyline([P.samabe,P.sanur,P.penida],{color:'#c0552d',weight:2.5,dashArray:'6 8',opacity:.85}).addTo(map);
+    L.polyline([P.samabe,P.indigo],{color:'#b48a45',weight:3,dashArray:'7 9',opacity:.9}).addTo(map);
+    L.polyline([P.indigo,P.ubud,P.tegalalang,P.tirta,P.akasa],{color:'#c0552d',weight:3,opacity:.85}).addTo(map);
+    L.polyline([P.indigo,P.tanahlot],{color:'#c0552d',weight:2.5,opacity:.8}).addTo(map);
+    L.polyline([P.indigo,P.airport],{color:'#8a7f6c',weight:2,dashArray:'3 8',opacity:.8}).addTo(map);
+
+    function dot(p,c,r){return L.circleMarker(p,{radius:r,color:'#fff',weight:2,fillColor:c,fillOpacity:1}).addTo(map);}
+    function lbl(m,t,sea){m.bindTooltip(t,{permanent:true,direction:'right',className:'mlbl'+(sea?' sea':''),offset:[6,0]});}
+    function pop(m,t){m.bindTooltip(t,{direction:'top',className:'mlbl',offset:[0,-4]});}
+
+    lbl(dot(P.airport,'#2a2620',7),'✈ 机场 DPS');
+    lbl(dot(P.samabe,'#9d3e1c',9),'Samabe（住 1–3）',true);
+    lbl(dot(P.indigo,'#9d3e1c',9),'Indigo（住 4–6）',true);
+    lbl(dot(P.akasa,'#b48a45',8),'☕ Akasa 火山咖啡');
+    lbl(dot(P.uluwatu,'#c0552d',7),'乌鲁瓦图神庙',true);
+    lbl(dot(P.penida,'#c0552d',7),'Nusa Penida 浮潜',true);
+    pop(dot(P.melasti,'#c0552d',6),'Melasti 海滩');
+    pop(dot(P.padang,'#c0552d',6),'Padang Padang');
+    pop(dot(P.sanur,'#c0552d',6),'Sanur 港');
+    pop(dot(P.ubud,'#2f5d4e',6),'乌布');
+    pop(dot(P.tegalalang,'#2f5d4e',6),'德格拉朗梯田');
+    pop(dot(P.tirta,'#2f5d4e',6),'Tirta Empul 圣泉');
+    pop(dot(P.tanahlot,'#c0552d',6),'Tanah Lot');
+
+    var g = L.featureGroup([L.marker(P.airport),L.marker(P.samabe),L.marker(P.indigo),
+      L.marker(P.akasa),L.marker(P.uluwatu),L.marker(P.penida)]);
+    map.fitBounds(g.getBounds(),{padding:[45,45]});
+  });
+</script>
+</body>
+</html>
