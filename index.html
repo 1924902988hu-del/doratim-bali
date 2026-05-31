@@ -543,6 +543,7 @@
     <div class="small">巴厘岛 7 日情侣行程 · 6/13–6/19 · Samabe + Hotel Indigo · 路线与通勤为实际路况估计，房价与营业请在预订前确认实时信息</div>
   </div>
 </footer>
+<button id="toTop" aria-label="回到顶部" title="回到顶部">↑</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
@@ -551,6 +552,11 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(Math.min(i%6,5)*0.06)+'s'; io.observe(el); });
+
+  // back to top
+  const toTop=document.getElementById('toTop');
+  addEventListener('scroll',()=>{ toTop.classList.toggle('show', scrollY>600); },{passive:true});
+  toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
   // Leaflet route map
   window.addEventListener('load', function(){
