@@ -32,7 +32,7 @@
 <style>
   :root{
     --paper:#f4ecdf;--paper-2:#ece1cf;--paper-3:#e4d7c1;
-    --ink:#2a2620;--ink-soft:#5d5446;--ink-faint:#8a7f6c;
+    --ink:#2a2620;--ink-soft:#5d5446;--ink-faint:#766a55;
     --palm:#2f5d4e;--palm-deep:#1d3d33;--sunset:#c0552d;--gold:#b48a45;
     --line:rgba(42,38,32,.16);--line-soft:rgba(42,38,32,.09);
     --shadow:0 22px 50px -28px rgba(29,61,51,.45);
@@ -132,7 +132,8 @@
   .exp{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:14px}
   .exp .x{background:var(--paper-2);border:1px solid var(--line-soft);border-radius:14px;padding:0 0 20px;overflow:hidden;transition:transform .3s,border-color .3s}
   .exp .x:hover{transform:translateY(-4px);border-color:var(--gold)}
-  .exp .x .x-img{height:158px;background:var(--palm-deep) center/cover no-repeat;margin-bottom:16px}
+  .exp .x .x-img{height:200px;background:var(--palm-deep) center/cover no-repeat;margin-bottom:16px}
+  .exp .x .x-img.pos-top{background-position:center 28%}
   .exp .x .mk{font-family:"Fraunces",serif;font-style:italic;color:var(--sunset);font-size:1.1rem;margin:0 20px 6px}
   .exp .x h5{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.05rem;margin:0 20px 5px}
   .exp .x p{font-size:.85rem;color:var(--ink-soft);line-height:1.6;margin:0 20px}
@@ -194,6 +195,12 @@
   .alt{margin-top:6px;background:var(--paper-2);border:1px solid var(--line-soft);border-radius:14px;padding:22px 24px}
   .alt h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.1rem;margin-bottom:9px}
   .alt p{font-size:.88rem;color:var(--ink-soft);margin-bottom:8px}
+  .budget{margin-top:30px;background:var(--paper-2);border:1px solid var(--line-soft);border-radius:16px;padding:26px 28px}
+  .budget h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.15rem;margin-bottom:14px}
+  .budget-tbl td{padding:11px 4px;font-size:.92rem}
+  .budget-tbl tr.budget-total td{border-top:2px solid var(--line);font-weight:700;color:var(--palm-deep);font-size:1.05rem;padding-top:14px}
+  .budget-tbl tr.budget-total td:last-child{font-size:1.15rem}
+  .budget-note{font-size:.78rem;color:var(--ink-faint);margin-top:12px;line-height:1.6}
   .alt p:last-child{margin-bottom:0}.alt b{color:var(--palm-deep);font-weight:600}
 
   /* TIPS */
@@ -314,7 +321,7 @@
       <div class="body">
         <h4>抵达 · 沉进私池</h4>
         <p>07:45 落地，提前约好私人司机接机，约 30 分钟到 Samabe（Sawangan 悬崖）。刚下红眼航班<strong>别排活动</strong>：寄存行李、争取早 check-in（蜜月可提），泡你那间 180㎡ 海景套房的<strong>私人泳池</strong>，或去海滩、做个 SPA 缓一缓红眼航班的疲惫（巴厘岛和北京<strong>零时差</strong>，不用倒时差，只是熬夜累）。<strong>傍晚去 AYANA Rock Bar 看日落喝酒</strong>（离 Samabe 约 15 分钟，海上岩石平台）<span class="pill" style="margin-left:6px">他 · 酒吧日落</span>，或金巴兰沙滩海鲜（选 Lia/Kelly's，避开 Menega 那条宰客街）。</p>
-        <div class="pills"><span class="pill">私人接机</span><span class="pill">私池 / 漂浮早餐</span><span class="pill">Rock Bar 日落</span><span class="pill">早睡倒时差</span></div>
+        <div class="pills"><span class="pill">私人接机</span><span class="pill">私池 / 漂浮早餐</span><span class="pill">Rock Bar 日落</span><span class="pill">早睡补觉</span></div>
         <div class="shots"><div class="photo" style="background-image:url('images/img-14.jpg')"><span>Samabe · 海景私池套房</span></div></div>
       </div>
     </div>
@@ -393,14 +400,14 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="num">04</span><h2>特色体验 · 情侣向</h2><span class="rule"></span></div>
     <div class="exp">
-      <div class="x reveal"><div class="x-img" style="background-image:url('images/exp-1.jpg')"></div><div class="mk">i.</div><h5>私池花瓣晚餐</h5><p>Samabe 海景套房私池撒花瓣＋烛光，或洞穴双人晚餐，蜜月仪式感天花板。</p></div>
+      <div class="x reveal"><div class="x-img pos-top" style="background-image:url('images/exp-1.jpg')"></div><div class="mk">i.</div><h5>私池花瓣晚餐</h5><p>Samabe 海景套房私池撒花瓣＋烛光，或洞穴双人晚餐，蜜月仪式感天花板。</p></div>
       <div class="x reveal"><div class="x-img" style="background-image:url('images/exp-2.jpg')"></div><div class="mk">ii.</div><h5>私池漂浮早餐</h5><p>泳池里的早餐托盘超出片。点最便宜档拍照，正经早餐去餐厅吃更实在。</p></div>
       <div class="x reveal"><div class="x-img" style="background-image:url('images/exp-3.jpg')"></div><div class="mk">iii.</div><h5>双人花瓣浴 SPA</h5><p>Samabe / Indigo 都能做，海风环绕、氛围满分，半天躺平的最佳打开方式。</p></div>
       <div class="x reveal"><div class="x-img" style="background-image:url('images/exp-4.jpg')"></div><div class="mk">iv.</div><h5>Akasa 火山咖啡</h5><p>金塔马尼正对巴图尔火山喝咖啡吃 brunch，悬空步道＋鸟巢座，上午最清。</p></div>
-      <div class="x reveal"><div class="x-img" style="background-image:url('images/exp-5.jpg')"></div><div class="mk">v.</div><h5>Nusa Penida 浮潜</h5><p>Manta Bay 看蝠鲼、Crystal Bay 看海龟珊瑚，选"只浮潜不上岛"最省心。</p></div>
+      <div class="x reveal"><div class="x-img pos-top" style="background-image:url('images/exp-5.jpg')"></div><div class="mk">v.</div><h5>Nusa Penida 浮潜</h5><p>Manta Bay 看蝠鲼、Crystal Bay 看海龟珊瑚，选"只浮潜不上岛"最省心。</p></div>
       <div class="x reveal"><div class="x-img" style="background-image:url('images/exp-6.jpg')"></div><div class="mk">vi.</div><h5>Kecak 火舞</h5><p>乌鲁瓦图神庙日落场，崖壁、海风、火光，全程必看（订 7 点场）。</p></div>
-      <div class="x reveal"><div class="x-img" style="background-image:url('images/exp-7.jpg')"></div><div class="mk">vii.</div><h5>金巴兰烛光海鲜</h5><p>沙滩上摆桌、脚踩细沙吃海鲜看日落（选 Lia / Kelly's，避开 Menega）。</p></div>
-      <div class="x reveal"><div class="x-img" style="background-image:url('images/exp-8.jpg')"></div><div class="mk">viii.</div><h5>海滩俱乐部日落</h5><p>Potato Head 本场 + AYANA Rock Bar 海上岩石平台，两种日落都收。</p></div>
+      <div class="x reveal"><div class="x-img pos-top" style="background-image:url('images/exp-7.jpg')"></div><div class="mk">vii.</div><h5>金巴兰烛光海鲜</h5><p>沙滩上摆桌、脚踩细沙吃海鲜看日落（选 Lia / Kelly's，避开 Menega）。</p></div>
+      <div class="x reveal"><div class="x-img pos-top" style="background-image:url('images/exp-8.jpg')"></div><div class="mk">viii.</div><h5>海滩俱乐部日落</h5><p>Potato Head 本场 + AYANA Rock Bar 海上岩石平台，两种日落都收。</p></div>
     </div>
     <div class="skip reveal"><b>不建议这趟做：</b>北部 Lovina 看海豚（追船扰豚、口碑差）和 Mount Batur 凌晨登顶徒步（2 点起床全天报废）——你们要的火山只是 Akasa 的景，开车到金塔马尼喝咖啡就够，不必爬山。</div>
   </div>
@@ -525,6 +532,21 @@
       <h4>怎么调</h4>
       <p><b>6/15 不想出海：</b>把 Nusa Penida 浮潜换成 GWK 文化公园＋Pandawa 海滩＋Samabe 全 SPA 躺平，更轻松。</p>
       <p><b>6/18 想再深一点：</b>可把 Tanah Lot 那天换成 Bedugul 湖中神庙＋Jatiluwih 高地环线，但又是 10h 长途、紧接红眼会累，建议保留这天恢复。</p>
+    </div>
+
+    <div class="budget reveal">
+      <h4>这趟大概多少钱 · 两人估算</h4>
+      <table class="transit budget-tbl">
+        <tr><td>机票（武汉↔DPS 往返 ×2）</td><td>¥10,000–11,000</td></tr>
+        <tr><td>住宿（Samabe 3 晚 + Indigo 3 晚）</td><td>¥20,000</td></tr>
+        <tr><td>包车（2–3 个全天 + 接送机）</td><td>¥1,500–2,200</td></tr>
+        <tr><td>Nusa Penida 浮潜（私船/拼船 ×2）</td><td>¥800–1,800</td></tr>
+        <tr><td>门票 + Kecak + SPA + 花瓣布置</td><td>¥1,500–2,500</td></tr>
+        <tr><td>餐饮（含 1–2 顿高端 + Potato Head）</td><td>¥3,000–4,500</td></tr>
+        <tr><td>签证 + 杂费（小费/电话卡/防晒）</td><td>¥800–1,200</td></tr>
+        <tr class="budget-total"><td>合计（两人，不含购物）</td><td>约 ¥38,000–43,000</td></tr>
+      </table>
+      <p class="budget-note">区间估算，按当前汇率与旺季价；机票越早订越省，住宿是大头。仅供心里有数，<b>实际以预订时报价为准</b>。</p>
     </div>
   </div>
 </section>
