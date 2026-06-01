@@ -10,11 +10,11 @@
 <meta property="og:title" content="巴厘岛 7 日 · 南岸私池 × 火山高地">
 <meta property="og:description" content="Samabe 南部 3 晚 + Indigo 水明漾 3 晚：私池、浮潜、Akasa 火山咖啡、海滩日落。">
 <meta property="og:url" content="https://doratim-bali.com">
-<meta property="og:image" content="https://doratim-bali.com/images/img-09.jpg">
+<meta property="og:image" content="https://doratim-bali.com/images/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="巴厘岛 7 日 · 南岸私池 × 火山高地">
 <meta name="twitter:description" content="Samabe 南部 3 晚 + Indigo 水明漾 3 晚：私池、浮潜、Akasa 火山咖啡、海滩日落。">
-<meta name="twitter:image" content="https://doratim-bali.com/images/img-09.jpg">
+<meta name="twitter:image" content="https://doratim-bali.com/images/hero.jpg">
 <meta name="author" content="doratim-bali">
 <meta name="theme-color" content="#1d3d33">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -221,6 +221,7 @@
   .reveal.in{opacity:1;transform:none}
 
   /* back to top */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--palm),var(--gold),var(--sunset));transition:width .1s linear}
   #toTop{position:fixed;right:20px;bottom:24px;z-index:50;width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
     background:var(--palm-deep);color:#f1eadd;font-size:1.2rem;line-height:1;box-shadow:0 8px 22px -8px rgba(29,61,51,.7);
     opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .3s,transform .3s}
@@ -564,6 +565,8 @@
       <div class="tip reveal"><div class="ic">¶</div><p><b>神庙礼仪</b>：要穿沙笼（现场提供）；猴子区收好眼镜、手机，它们真的会抢。</p></div>
       <div class="tip reveal"><div class="ic">¶</div><p><b>支付 &amp; 防晒</b>：订房/消费选 IDR 计价避 5% 货币费；小额门票备现金；6 月紫外线强，帽子、防晒、瓶装水带齐。</p></div>
       <div class="tip reveal"><div class="ic">¶</div><p><b>季节</b>：6 月是旱季，全年最舒服的窗口之一，天气稳、人比 7、8 月少。</p></div>
+      <div class="tip reveal"><div class="ic">✦</div><p><b>打包清单</b>：泳衣 ×2、防晒 SPF50+、防蚊液、薄外套（火山/空调冷）、转换插头（印尼欧标）、晕船药（浮潜日）、肠胃药、拖鞋+一双好走的鞋（火山碎石）、墨镜帽子、护照复印件。</p></div>
+      <div class="tip reveal"><div class="ic">✦</div><p><b>应急 &amp; 常用</b>：报警 110 / 急救 118 / 旅游警察 +62 361 754599；BIMC、Siloam 是岛上最好的私立医院（认国际保险）；存好 Grab / Gojek（打车）、Google Maps 离线包、酒店前台电话。出发前买含医疗的旅游保险。</p></div>
     </div>
   </div>
 </section>
@@ -586,9 +589,14 @@
   },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(Math.min(i%6,5)*0.06)+'s'; io.observe(el); });
 
-  // back to top
+  // back to top + reading progress
   const toTop=document.getElementById('toTop');
-  addEventListener('scroll',()=>{ toTop.classList.toggle('show', scrollY>600); },{passive:true});
+  const bar=document.getElementById('progress');
+  addEventListener('scroll',()=>{
+    toTop.classList.toggle('show', scrollY>600);
+    const h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.width=(h>0?scrollY/h*100:0)+'%';
+  },{passive:true});
   toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
   // Leaflet route map
